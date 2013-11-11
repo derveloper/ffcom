@@ -25,6 +25,8 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    apipie-rails (0.0.24)
+      rails (>= 3.0.10)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -67,6 +69,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     guard (2.2.3)
       formatador (>= 0.2.4)
@@ -183,14 +187,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apipie-rails
   better_errors
   binding_of_caller
   bootstrap-sass (>= 3.0.0.0)
   cancan
-  coffee-rails (~> 4.0.0)
   devise
   factory_girl_rails
   figaro
+  font-awesome-rails (>= 4.0.0)
   guard-bundler
   guard-rails
   jbuilder (~> 1.2)

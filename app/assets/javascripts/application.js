@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require raphael/raphael-2.1.0.min
+//= require morris/morris-0.4.3.min
+//= require morris/chart-data-morris
+//= require tablesorter/jquery.tablesorter
+//= require tablesorter/tables
 //= require_tree .

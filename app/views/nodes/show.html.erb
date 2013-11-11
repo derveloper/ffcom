@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mac address:</strong>
+  <%= @node.mac_address %>
+</p>
+
+<p>
+  <strong>Pub key:</strong>
+  <%= @node.pub_key %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @node.user %>
+</p>
+
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<%= link_to 'Back', nodes_path %>

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110213544) do
+ActiveRecord::Schema.define(version: 20131110214028) do
+
+  create_table "nodes", force: true do |t|
+    t.string   "mac_address"
+    t.string   "pub_key"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "nodes", ["mac_address"], name: "index_nodes_on_mac_address"
+  add_index "nodes", ["pub_key"], name: "index_nodes_on_pub_key", unique: true
+  add_index "nodes", ["user_id"], name: "index_nodes_on_user_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
