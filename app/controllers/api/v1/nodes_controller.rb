@@ -2,33 +2,35 @@ class Api::V1::NodesController < NodesController
   resource_description do
     resource_id 'nodes'
     api_versions '1'
+    formats ['json']
+  end
+
+  def_param_group :node do
+    param :mac_address, String, 'MAC address of the node'
+    param :pub_key, String, 'Public key for fastd'
   end
 
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   # GET /api/1/nodes
   # GET /api/1/nodes.json
+  api :GET, "/nodes", "Fetch all nodes"
   def index
     @nodes = Node.all
   end
 
   # GET /api/1/nodes/1
   # GET /api/1/nodes/1.json
+  api :GET, "/nodes/:id", "Get node info"
+  example Node.new.to_json
   def show
-  end
-
-  # GET /api/1/nodes/new
-  def new
-    @node = Node.new
-  end
-
-  # GET /api/1/nodes/1/edit
-  def edit
   end
 
   # POST /api/1/nodes
   # POST /api/1/nodes.json
   api :POST, "/nodes", "Register a node"
+  param_group :node
+  example " { 'message': 'success', 'id': 1 } "
   def create
     @node = Node.new(node_params)
 
@@ -45,6 +47,9 @@ class Api::V1::NodesController < NodesController
 
   # PATCH/PUT /api/1/nodes/1
   # PATCH/PUT /api/1/nodes/1.json
+  api :PUT, "/nodes/:id", "Update a node"
+  param_group :node
+  example " { 'message': 'success', 'id': 1 } "
   def update
     respond_to do |format|
       if @node.update(node_params)
@@ -59,6 +64,8 @@ class Api::V1::NodesController < NodesController
 
   # DELETE /api/1/nodes/1
   # DELETE /api/1/nodes/1.json
+  api :DELETE, "/nodes/:id", "Delete a node"
+  example " { 'message': 'success' } "
   def destroy
     @node.destroy
     respond_to do |format|
