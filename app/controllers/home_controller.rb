@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @nodes = Node.all.limit(10)
   end
 end
