@@ -1,4 +1,4 @@
-json.array!(@api_v1_nodes) do |api_v1_node|
-  json.extract! api_v1_node, 
-  json.url api_v1_node_url(api_v1_node, format: :json)
+json.array!(@nodes) do |node|
+  json.extract! node, :mac_address, :user_id
+  json.url node_url(node, format: :json)
 end
