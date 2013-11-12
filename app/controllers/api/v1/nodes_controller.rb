@@ -22,7 +22,7 @@ class Api::V1::NodesController < NodesController
   # GET /api/1/nodes/1
   # GET /api/1/nodes/1.json
   api :GET, "/nodes/:id", "Get node info"
-  example Node.new.to_json
+  example 'node'
   def show
   end
 
@@ -36,10 +36,8 @@ class Api::V1::NodesController < NodesController
 
     respond_to do |format|
       if @node.save
-        format.html { redirect_to @node, notice: 'Node was successfully created.' }
         format.json { render action: 'show', status: :created, location: @node }
       else
-        format.html { render action: 'new' }
         format.json { render json: @node.errors, status: :unprocessable_entity }
       end
     end
@@ -53,10 +51,8 @@ class Api::V1::NodesController < NodesController
   def update
     respond_to do |format|
       if @node.update(node_params)
-        format.html { redirect_to @node, notice: 'Node was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
         format.json { render json: @node.errors, status: :unprocessable_entity }
       end
     end
@@ -65,11 +61,9 @@ class Api::V1::NodesController < NodesController
   # DELETE /api/1/nodes/1
   # DELETE /api/1/nodes/1.json
   api :DELETE, "/nodes/:id", "Delete a node"
-  example " { 'message': 'success' } "
   def destroy
     @node.destroy
     respond_to do |format|
-      format.html { redirect_to nodes_url }
       format.json { head :no_content }
     end
   end
