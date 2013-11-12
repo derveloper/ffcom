@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class NodesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
-    @node = nodes(:one)
+    @user = FactoryGirl.create(:user)
+    @node = FactoryGirl.create(:node)
   end
 
   test "should get index" do
@@ -18,7 +21,8 @@ class NodesControllerTest < ActionController::TestCase
 
   test "should create node" do
     assert_difference('Node.count') do
-      post :create, node: { mac_address: @node.mac_address, pub_key: @node.pub_key, user_id: @node.user_id }
+      node = FactoryGirl.attributes_for(:node)
+      post :create, node: node
     end
 
     assert_redirected_to node_path(assigns(:node))
