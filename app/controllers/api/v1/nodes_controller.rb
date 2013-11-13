@@ -43,31 +43,6 @@ class Api::V1::NodesController < NodesController
     end
   end
 
-  # PATCH/PUT /api/1/nodes/1
-  # PATCH/PUT /api/1/nodes/1.json
-  api :PUT, "/nodes/:id", "Update a node"
-  param_group :node
-  example " { 'message': 'success', 'id': 1 } "
-  def update
-    respond_to do |format|
-      if @node.update(node_params)
-        format.json { head :no_content }
-      else
-        format.json { render json: @node.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /api/1/nodes/1
-  # DELETE /api/1/nodes/1.json
-  api :DELETE, "/nodes/:id", "Delete a node"
-  def destroy
-    @node.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_node

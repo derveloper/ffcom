@@ -1,4 +1,5 @@
 class NodesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_node, only: [:show, :edit, :update, :destroy]
 
   # GET /nodes
@@ -19,6 +20,7 @@ class NodesController < ApplicationController
 
   # GET /nodes/1/edit
   def edit
+    authorize! :edit, @node
   end
 
   # POST /nodes
@@ -40,6 +42,7 @@ class NodesController < ApplicationController
   # PATCH/PUT /nodes/1
   # PATCH/PUT /nodes/1.json
   def update
+    authorize! :update, @node
     respond_to do |format|
       if @node.update(node_params)
         format.html { redirect_to @node, notice: 'Node was successfully updated.' }
@@ -54,6 +57,7 @@ class NodesController < ApplicationController
   # DELETE /nodes/1
   # DELETE /nodes/1.json
   def destroy
+    authorize! :delete, @node
     @node.destroy
     respond_to do |format|
       format.html { redirect_to nodes_url }
