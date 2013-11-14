@@ -6,6 +6,9 @@ class NodesControllerTest < ActionController::TestCase
   setup do
     @user = FactoryGirl.create(:user)
     @node = FactoryGirl.create(:node)
+    @node.user = @user
+    @node.save
+    sign_in @user
   end
 
   test "should get index" do
