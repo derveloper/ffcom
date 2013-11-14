@@ -30,7 +30,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'thin'
 end
-group :production do
+group :production, :test do
   gem 'puma'
   gem 'pg'
   gem 'rails_12factor'
