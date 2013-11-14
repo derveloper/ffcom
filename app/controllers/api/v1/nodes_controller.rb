@@ -14,21 +14,21 @@ class Api::V1::NodesController < NodesController
 
   # GET /api/1/nodes
   # GET /api/1/nodes.json
-  api :GET, "/nodes", "Fetch all nodes"
+  api :GET, "/1/nodes", "List nodes"
   def index
     @nodes = Node.all
   end
 
   # GET /api/1/nodes/1
   # GET /api/1/nodes/1.json
-  api :GET, "/nodes/:id", "Get node info"
+  api :GET, "/1/nodes/:id", "Show a node"
   example 'node'
   def show
   end
 
   # POST /api/1/nodes
   # POST /api/1/nodes.json
-  api :POST, "/nodes", "Register a node"
+  api :POST, "/1/nodes", "Create a node"
   param_group :node
   example " { 'message': 'success', 'id': 1 } "
   def create
